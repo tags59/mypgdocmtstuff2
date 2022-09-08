@@ -1,0 +1,14 @@
+---
+- name: testing group variable with software installation
+  hosts: all
+  become: true
+  vars:
+          mystate: present
+  tasks:
+          - name: adding user
+            user:
+                   name: "{{ myuser3 }}"
+                   state: "{{ mystate }}"
+                   password: "{{ 'redhat' | password_hash('sha512') }}"
+
+

@@ -1,0 +1,19 @@
+---
+- name: testing group variable in separate directory with software installation
+  hosts: all
+  become: true
+  vars:
+          mystate: present
+  tasks:
+          - name: adding users
+            user:
+                   name: "{{ myuser4 }}"
+                   state: "{{ mystate }}"
+                   password: "{{ 'redhat' | password_hash('sha512') }}"
+
+          - name: adding groups
+            group:
+                    name: "{{ mygroup }}"
+                    state: "{{ mystate }}"
+
+
